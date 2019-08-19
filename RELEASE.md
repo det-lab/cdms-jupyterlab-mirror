@@ -7,6 +7,8 @@
     - Cmake 3.15.2
 - Tweak Dockerfile to use more variables for easier future software updates
 - Minor updates to tutorial notebooks
+- Source code updates:
+    - create script to clone repos
 
 ### Version 1.6  
 - Reduce launcher options to simplify interface

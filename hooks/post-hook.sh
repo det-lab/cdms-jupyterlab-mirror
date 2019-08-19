@@ -25,5 +25,5 @@ ln -s /packages/tutorials/AnimalDataIO.py $HOME/notebooks/Tutorials/Introduction
 chmod -R 555 $HOME/notebooks/Tutorials
 
 ## Customize bash env
-ln -s /packages/bash_env/ $HOME
-bash $HOME/bash_env/init.sh
+ln -s /packages/cdmsbash/ $HOME
+bash $HOME/cdmsbash/init.sh
