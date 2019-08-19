@@ -8,7 +8,7 @@ echo Script directory: $DIR
 cd $DIR
 docker build \
     --rm \
-    -t supercdms/cdms-jupyterlab:1.7b \
+    --tag supercdms/cdms-jupyterlab:1.7b \
     -f Dockerfile .
 
 docker push supercdms/cdms-jupyterlab:1.7b

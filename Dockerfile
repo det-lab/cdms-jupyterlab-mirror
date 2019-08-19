@@ -10,7 +10,7 @@ ENV CMAKEVER=3.15.2
 ENV BOOSTVER=1.70.0
 ENV BOOST_PATH=/packages/boost1.70
 ENV ROOTVER=6.18.00
-ENV ROOTDIR=/packages/root6.18
+ENV ROOTSYS=/packages/root6.18
  
 RUN yum -y install sudo && sudo yum -y upgrade
 
@@ -56,7 +56,7 @@ RUN source scl_source enable rh-python36 && \
 	-Dfitsio:BOOL=OFF \
 	-Dfftw:BOOL=ON \
 	-Dxrootd:BOOL=OFF \
-	-DCMAKE_INSTALL_PREFIX:PATH=$ROOTDIR \
+	-DCMAKE_INSTALL_PREFIX:PATH=$ROOTSYS \
 	-Dpython3=ON \
 	-Dpython=ON \
 	-DPYTHON_EXECUTABLE:PATH=/opt/rh/rh-python36/root/usr/bin/python \
@@ -90,7 +90,7 @@ RUN sudo yum install -y \
 	&& sudo yum clean all
 
 ## Install additional Python packages
-RUN source $ROOTDIR/bin/thisroot.sh && \
+RUN source $ROOTSYS/bin/thisroot.sh && \
 	source scl_source enable rh-python36 && \
 	pip3 install --upgrade pip setuptools && \
 	pip3 --no-cache-dir install \
@@ -104,13 +104,13 @@ RUN source $ROOTDIR/bin/thisroot.sh && \
 		xlrd xlwt openpyxl 
 
 ## Install Anaconda 3 and some packages
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh -O /packages/anaconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh -O /packages/anaconda.sh && \
     /bin/bash /packages/anaconda.sh -b -p /packages/anaconda3 && \
     rm /packages/anaconda.sh
-COPY scripts/rootenv.sh $ROOTDIR/bin/ 
+COPY scripts/rootenv.sh $ROOTSYS/bin/ 
 RUN . /packages/anaconda3/etc/profile.d/conda.sh && \
 	conda activate base && \ 
-	. $ROOTDIR/bin/rootenv.sh && \
+	. $ROOTSYS/bin/rootenv.sh && \
 	conda install jupyter jupyterlab metakernel \
 	        h5py iminuit tensorflow pydot keras \
 	        dask[complete] \
@@ -123,21 +123,21 @@ RUN . /packages/anaconda3/etc/profile.d/conda.sh && \
 ### CDMS packages ###
 
 ## Import CDMS packages
-COPY cdms_repos/python_colorschemes /packages/python_colorschemes
-COPY cdms_repos/tutorials /packages/tutorials
 COPY cdms_repos/analysis_tools /packages/analysis_tools
-COPY cdms_repos/pyCAP /packages/pyCAP
-COPY cdms_repos/scdmsPyTools /packages/scdmsPyTools
-COPY cdms_repos/scdmsPyTools_TF /packages/scdmsPyTools_TF
-COPY cdms_repos/bash_env /packages/bash_env
+COPY cdms_repos/Analysis/python_colorschemes /packages/python_colorschemes
+COPY cdms_repos/Analysis/tutorials /packages/tutorials
+COPY cdms_repos/Analysis/pyCAP /packages/pyCAP
+COPY cdms_repos/Analysis/scdmsPyTools /packages/scdmsPyTools
+COPY cdms_repos/Analysis/scdmsPyTools_TF /packages/scdmsPyTools_TF
+COPY cdms_repos/CompInfrastructure/cdmsbash /packages/cdmsbash
 
 WORKDIR /packages
 RUN source scl_source enable rh-python36 && \
-	source $ROOTDIR/bin/thisroot.sh && \
+	source $ROOTSYS/bin/thisroot.sh && \
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BOOST_PATH/lib && \
 	cd /packages/analysis_tools && python setup.py install && \
 	cd /packages/python_colorschemes && python setup.py install && \
-	cd /packages/pyCAP && setup.py install && \
+	cd /packages/pyCAP && python setup.py install && \
 	cd /packages/scdmsPyTools/scdmsPyTools/BatTools && \
 	make && cd ../.. && python setup.py install 
 
