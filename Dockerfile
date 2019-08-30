@@ -145,6 +145,7 @@ RUN source scl_source enable rh-python36 && \
 
 ## Copy hook for Tutorials and custom bash env
 COPY hooks/post-hook.sh /opt/slac/jupyterlab/post-hook.sh
+ENV SHELL=/packages/anaconda3/bin/fish
 
 ## Create ROOT-enabled and code-developing notebook options 
 COPY hooks/launch.bash /opt/slac/jupyterlab/launch.bash
