@@ -5,10 +5,13 @@ echo Script directory: $DIR
 
 . scripts/clone-repos.sh
 
+export DOCKER_IMG='supercdms/cdms-jupyterlab'
+export IMAGE_VER='1.7b'
+
 cd $DIR
 docker build \
     --rm \
-    --tag supercdms/cdms-jupyterlab:1.7b \
+    --tag $DOCKER_IMG:$IMAGE_VER \
     -f Dockerfile .
 
-docker push supercdms/cdms-jupyterlab:1.7b
+docker push $DOCKER_IMG:$IMAGE_VER
