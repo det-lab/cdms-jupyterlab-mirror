@@ -1,9 +1,32 @@
 #!/usr/bin/env bash
 
-export CDMSGIT='git@gitlab.com:supercdms'
+### make local directory for cloning repos
 
 if [ ! -e "$DIR/cdms_repos" ]; then mkdir $DIR/cdms_repos; fi
 
+### Repositories in GitLab
+
+export CDMSGIT='git@gitlab.com:supercdms'
+
+repos=( 
+    "CompInfrastructure/cdmsbash"
+    "Analysis/python_colorschemes" 
+    "Analysis/tutorials" 
+    "Analysis/pyCAP" 
+    "Analysis/scdmsPyTools_TF" 
+)
+
+for repo in "${repos[@]}"; do
+    if [[ -d "$DIR/cdms_repos/$repo" ]]; then
+        cd $DIR/cdms_repos/$repo 
+        git pull
+    elif [[ ! -e "$DIR/cdms_repos/$repo" ]]; then
+        cd $DIR/cdms_repos/
+        git clone $CDMSGIT/$repo
+    fi
+done
+
+### Repositories that need to be cloned separately
 # analysis_tools (not in gitlab)
 if [ -d "$DIR/cdms_repos/analysis_tools" ] && [ -d "$DIR/cdms_repos/analysis_tools/.git" ]; then
     cd $DIR/cdms_repos/analysis_tools
@@ -34,23 +57,6 @@ else
     cd $DIR/cdms_repos/Analysis/scdmsPyTools
     git submodule update --init --recursive
 fi
-    
-repos=( 
-    "CompInfrastructure/cdmsbash"
-    "Analysis/python_colorschemes" 
-    "Analysis/tutorials" 
-    "Analysis/pyCAP" 
-    "Analysis/scdmsPyTools_TF" 
-)
 
-for repo in "${repos[@]}"; do
-    if [[ -d "$DIR/cdms_repos/$repo" ]]; then
-        cd $DIR/cdms_repos/$repo 
-        git pull
-    elif [[ ! -e "$DIR/cdms_repos/$repo" ]]; then
-        cd $DIR/cdms_repos/
-        git clone $CDMSGIT/$repo
-    fi
-done
-
+### Move back to top level dir
 cd $DIR
