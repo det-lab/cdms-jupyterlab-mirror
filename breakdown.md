@@ -102,7 +102,7 @@ Then there's a section that defines versions and installation locations for the 
 
 From here, the Dockerfile will:  
 
-1.  Install dependencies for ROOT and Boost
+1. Install dependencies for ROOT and Boost
 2. Compile CMake v>3.9, required for ROOT 6 but not packaged in CentOS 7
 3. Compile Boost and ROOT
    - There's a line after Boost installation which symlinks a couple of things, this is just for compatibility as somethings get confused if shared objects do or don't have a version number in the name...
