@@ -5,7 +5,7 @@ Alright, now we know what all the files do, let's look at how we use them to bui
 To actually build the image, just open a terminal and call:  
 `$ bash ../cdms-jupyterlab/build.sh`
 
-From here, the script will 
+And that's it!! From here, the script will:  
 
 1. Source  `scripts/clone-repos` to clone or pull CDMS repos locally in `../cdms-jupyterlab/cdms-repos/`
 
