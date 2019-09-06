@@ -1,4 +1,4 @@
-### Now let's break each of them down
+### A closer look at the files in this repository
 
 Most of the shell scripts starts with  
 ```
@@ -79,3 +79,6 @@ exec python${PYTHON_VER} -m ipykernel -f ${CONFIG_FILE}
 ```
 
 It gets a couple things from that `kernel.json`, but notice that line `source $ROOTSYS/bin/thisroot.sh`? That's what allows the notebook to know where ROOT is and use it properly. ROOT should be the only case where something like this needs to be done, but other bash commands can be issued there before the notebook kernel is actually started. 
+
+
+### OK, so how do I actually use this repo? [Click here to continue](./building.md)
