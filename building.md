@@ -7,11 +7,11 @@ To actually build the image, just open a terminal and call:
 
 From here, the script will 
 
-1. Sources  `scripts/clone-repos` to clone or pull CDMS repos locally in `../cdms-jupyterlab/cdms-repos/`
+1. Source  `scripts/clone-repos` to clone or pull CDMS repos locally in `../cdms-jupyterlab/cdms-repos/`
 
 2. Call the Docker daemon to build an image based on `./Dockerfile`, tagging it with the version number from `build.sh`, and 
 
-3. push it to `supercdms/cdms-jupyterlab:$IMG_VER`
+3. Push it to `supercdms/cdms-jupyterlab:$IMG_VER`
 
 #### Image Tags / Versions
 
@@ -19,3 +19,5 @@ The only thing we should really change in `./build.sh` is the $IMG_VER tag when 
 
 Hopefully this is something we'll eventually get easier control of, but in the mean time, most of my changes are to the same 'beta' version, rather than iterating the version number with every new build (as would probably be the normal case). 
 So for example, just keep building and making changes to '1.7b' until it seems really stable, and any changes you might start making are a little bigger (like upgrading ROOT, or maybe Yee has a new base image to pull from). At that point you might push it to `1.7`, merge the `cdms-jupyterlab` repository to the master branch, and start working in develop on `1.8b`. 
+
+### Cool! What about fixing or making changes to an image? [Leeeeeeeeet's find out!](changing.md)
