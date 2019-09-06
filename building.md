@@ -3,7 +3,9 @@
 Alright, now we know what all the files do, let's look at how we use them to build an image. 
 
 To actually build the image, just open a terminal and call:  
-`$ bash ../cdms-jupyterlab/build.sh`
+`cdms-jupyterlab $ bash build.sh`
+or  
+`/any/directory $ bash /path/to/cdms-jupyterlab/build.sh` 
 
 And that's it!! From here, the script will:  
 
