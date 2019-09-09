@@ -1,6 +1,6 @@
-### So you're looking to help manage the CDMS Jupyter space... Good luck! 
+### So you're looking to help manage the CDMS Jupyter space...  
 
-I'm kidding it's not so bad. It can be a bit weird at first though, so my hope with this document is to break down the git repository, and walk you through the steps in building a new image and making it accessible to the collaboration!
+It can be a bit weird at first, so my hope with this document is to break down the git repository, and walk you through the steps in building a new image and making it accessible to the collaboration!
 
 Go ahead and clone the repository anywhere you like:  
 `$ git clone https://gitlab.com/supercdms/CompInfrastructure/cdms-jupyterlab.git`
