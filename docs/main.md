@@ -9,7 +9,8 @@ Go ahead and clone the repository anywhere you like:
 
 - README, RELEASE, LICENSE - the usual stuff. 
 
-- A **build.sh** script which does everything for us, just needs to be called from command line: `bash build.sh`  
+- A **build.sh** script which does everything for us, just needs to be called from command line:  
+  - `$ bash build.sh`  
   - The image version can be tweaked in here, it's the variable `$IMAGE_VER`
 
 - The main course is the **Dockerfile**, which is a series of instructions for the Docker daemon when it builds an image.  
