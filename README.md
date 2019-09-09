@@ -27,6 +27,8 @@ If you're interested in building your own Docker image for local use:
 
 ## Contributing
 
-If you'd like to make changes to the CDMS JupyterLab analysis environment, you should contribute to the develop branch of this repository.
+If you'd like to make changes to the CDMS JupyterLab analysis environment, you should contribute to the **develop branch of this repository**.
 
-For detailed instructions, get started with the [docs directory](./docs/main.md)!
+Detailed instructions can be found in the `docs` directory. 
+
+[It's dangerous to go alone. Take this!](docs/main.md)
