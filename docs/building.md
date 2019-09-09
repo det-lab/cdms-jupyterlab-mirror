@@ -7,13 +7,7 @@ To actually build the image, just open a terminal and call:
 or  
 `/any/directory $ bash /path/to/cdms-jupyterlab/build.sh` 
 
-And that's it!! From here, the script will:  
-
-1. Source  `scripts/clone-repos` to clone or pull CDMS repos locally in `../cdms-jupyterlab/cdms-repos/`
-
-2. Call the Docker daemon to build an image based on `./Dockerfile`, tagging it with the version number from `build.sh`, and 
-
-3. Push it to `supercdms/cdms-jupyterlab:$IMG_VER`
+And that's it! From here, the script will clone what it needs, build the image and push it. 
 
 #### Image Tags / Versions
 
@@ -37,3 +31,44 @@ So now that we know how all the pieces work, we can start doing a few different 
 4. Sometimes, the base image, `slaclab/slac-jupyterlab` will be updated, and we'll want to make sure we're using the latest and greatest from Yee. 
     - Yee will let you know what the version number is, it's usually the date he releases it. Just update this in that top `FROM` line in `Dockerfile`
     - This makes sure that things like volume mounting and network routing are working properly, as well as introducing occasional neat treats like Google Drive integration!
+
+#### Build errors
+
+You might occasionally run into issues building an image. `docker build` fails whenever a command returns a non-zero exit code. This could be because something is requesting input, which Docker doesn't support. In this case you need to find a way to make the command run quietly (for example, the anaconda installation passes the install directory as an argument, so that it doesn't ask for the location during the build). This could also just be because something failed to run. In which case, you will need to trace back the output of the `docker build` command - you may find a typo in a package you were trying to install, or perhaps there's a dependency problem. 
+
+#### Saving space
+
+When you run into errors in building an image, you may have to adjust the repository files, try to build again, and potentially repeat this process numerous times. Docker is normally pretty good about keeping things small, but it also builds in **layers**, and caches each layer on disk to make future builds more efficient. This eventually starts to take up space, but there is something we can do about it! 
+
+1. We can try to make sure we're saving recent layers by running an already built container locally, for example:  
+```
+$ docker run -it supercdms/cdms-jupyterlab:1.7b bash
+```
+
+2. Now we open a new shell session, and clean out everything that isn't related to at least one container:  
+```
+$ docker system prune -a
+WARNING! This will remove:
+        - all stopped containers
+        - all volumes not used by at least one container
+        - all networks not used by at least one container
+        - all images without at least one container associated to them
+Are you sure you want to continue? [y/N] y
+
+
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
+
+Total reclaimed space: 24.45 GB
+
+$ 
+```
+
+And boom! Now ideally, we shouldn't have to build the next image from scratch, but still managed to clear up a bit of space. 
