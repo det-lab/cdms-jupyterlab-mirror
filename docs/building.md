@@ -22,4 +22,4 @@ The only thing we should really change in `./build.sh` is the $IMG_VER tag when 
 Hopefully this is something we'll eventually get easier control of, but in the mean time, most of my changes are to the same 'beta' version, rather than iterating the version number with every new build (as would probably be the normal case). 
 So for example, just keep building and making changes to `1.7b` until it seems really stable, and any changes you might start making are a little bigger (like upgrading ROOT, or maybe Yee has a new base image to pull from). At that point you might push it to `1.7`, merge the cdms-jupyterlab repository to the `master` branch, and start working in `develop` on `1.8b`. 
 
-### Cool! What about fixing or making changes to an image? [Leeeeeeeeet's find out!](changing.md)
+### Cool! What about fixing or making changes to an image? [Let's take a look!](changing.md)
