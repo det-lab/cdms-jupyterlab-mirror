@@ -41,7 +41,7 @@ As far as what it actually does:
 repos=( 
     "CompInfrastructure/cdmsbash"
     "Analysis/python_colorschemes" 
-    "Ana lysis/tutorials" 
+    "Analysis/tutorials" 
     "Analysis/pyCAP" 
     "Analysis/scdmsPyTools_TF" 
 )
