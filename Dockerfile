@@ -8,9 +8,9 @@ USER root
 
 ENV CMAKEVER=3.15.2
 ENV BOOSTVER=1.70.0
-ENV BOOST_PATH=/packages/boost1.70
+ENV BOOST_PATH=/opt/boost1.70
 ENV ROOTVER=6.18.00
-ENV ROOTSYS=/packages/root6.18
+ENV ROOTSYS=/opt/root6.18
  
 RUN yum -y install sudo && sudo yum -y upgrade
 
@@ -104,11 +104,11 @@ RUN source $ROOTSYS/bin/thisroot.sh && \
 		xlrd xlwt openpyxl 
 
 ## Install Anaconda 3 and some packages
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh -O /packages/anaconda.sh && \
-    /bin/bash /packages/anaconda.sh -b -p /packages/anaconda3 && \
-    rm /packages/anaconda.sh
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh -O /opt/anaconda.sh && \
+    /bin/bash /opt/anaconda.sh -b -p /opt/anaconda3 && \
+    rm /opt/anaconda.sh
 COPY scripts/rootenv.sh $ROOTSYS/bin/ 
-RUN . /packages/anaconda3/etc/profile.d/conda.sh && \
+RUN . /opt/anaconda3/etc/profile.d/conda.sh && \
 	conda activate base && \ 
 	. $ROOTSYS/bin/rootenv.sh && \
 	conda install jupyter jupyterlab metakernel \
@@ -123,29 +123,29 @@ RUN . /packages/anaconda3/etc/profile.d/conda.sh && \
 ### CDMS packages ###
 
 ## Import CDMS packages
-COPY cdms_repos/analysis_tools /packages/analysis_tools
-COPY cdms_repos/Analysis/python_colorschemes /packages/python_colorschemes
-COPY cdms_repos/Analysis/tutorials /packages/tutorials
-COPY cdms_repos/Analysis/pyCAP /packages/pyCAP
-COPY cdms_repos/Analysis/scdmsPyTools /packages/scdmsPyTools
-COPY cdms_repos/Analysis/scdmsPyTools_TF /packages/scdmsPyTools_TF
-COPY cdms_repos/CompInfrastructure/cdmsbash /packages/cdmsbash
+COPY cdms-repos/analysis_tools /opt/analysis_tools
+COPY cdms-repos/Analysis/python_colorschemes /opt/python_colorschemes
+COPY cdms-repos/Analysis/tutorials /opt/tutorials
+COPY cdms-repos/Analysis/pyCAP /opt/pyCAP
+COPY cdms-repos/Analysis/scdmsPyTools /opt/scdmsPyTools
+COPY cdms-repos/Analysis/scdmsPyTools_TF /opt/scdmsPyTools_TF
+COPY cdms-repos/CompInfrastructure/cdmsbash /opt/cdmsbash
 
-WORKDIR /packages
+WORKDIR /opt
 RUN source scl_source enable rh-python36 && \
 	source $ROOTSYS/bin/thisroot.sh && \
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BOOST_PATH/lib && \
-	cd /packages/analysis_tools && python setup.py install && \
-	cd /packages/python_colorschemes && python setup.py install && \
-	cd /packages/pyCAP && python setup.py install && \
-	cd /packages/scdmsPyTools/scdmsPyTools/BatTools && \
+	cd /opt/analysis_tools && python setup.py install && \
+	cd /opt/python_colorschemes && python setup.py install && \
+	cd /opt/pyCAP && python setup.py install && \
+	cd /opt/scdmsPyTools/scdmsPyTools/BatTools && \
 	make && cd ../.. && python setup.py install 
 
 ### Finalize environment ###
 
 ## Copy hook for Tutorials and custom bash env
 COPY hooks/post-hook.sh /opt/slac/jupyterlab/post-hook.sh
-ENV SHELL=/packages/anaconda3/bin/fish
+ENV SHELL=/opt/anaconda3/bin/fish
 
 ## Create ROOT-enabled and code-developing notebook options 
 COPY hooks/launch.bash /opt/slac/jupyterlab/launch.bash

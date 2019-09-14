@@ -6,6 +6,7 @@
     - Boost lib 1.70.0
     - Cmake 3.15.2
 - Tweak Dockerfile to use more variables for easier future software updates
+- Replace `/packages` with `/opt` for all installations (for compatibility with potential future updates)
 - Minor updates to tutorial notebooks
 - Source code updates:
     - create script to clone repos
