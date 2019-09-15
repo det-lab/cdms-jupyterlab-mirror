@@ -86,7 +86,7 @@ ROOT comes with a script, `$ROOTSYS/bin/thisroot.sh`, which must be sourced in a
 
 However, ROOT can still be used with another Python, for example, a user's local Anaconda installation. This script takes the essential environment variables set by `thisroot.sh` and re-defines them in a simpler, more portable way. 
 
-In the context of the CDMS Jupyter image, there's an installation of Anaconda3 in `/packages/anaconda3`, so even though the SCL Python was used to build ROOT, users can call `conda activate base` and `source $ROOTSYS/bin/rootenv.sh` to use ROOT with Anaconda. 
+In the context of the CDMS Jupyter image, there's an installation of Anaconda3 in `/opt/anaconda3`, so even though the SCL Python was used to build ROOT, users can call `conda activate base` and `source $ROOTSYS/bin/rootenv.sh` to use ROOT with Anaconda. 
 
 This isn't terribly important, but I keep it in place because I personally prefer Anaconda to SCL Python, and it doesn't seem like we'll be officially transitioning any time soon. 
 
@@ -108,7 +108,7 @@ From here, the Dockerfile will:
    - There's a line after Boost installation which symlinks a couple of things, this is just for compatibility as somethings get confused if shared objects do or don't have a version number in the name...
 4. Install some extra system level packages that are either dependencies for CDMS software or just useful to have 
 5. Install Anaconda 3 and some packages
-6. Copy and install those CDMS repos from your local folder into the image under `/packages`
+6. Copy and install those CDMS repos from your local folder into the image under `/opt`
 7. Copy the `post-hook.sh` for eg. managing the Tutorials directory and configuring the bash environment
 8. Copy the notebook configuration files
    - There's a `rm -rf` line that removes the default notebook kernel option, which doesn't have ROOT support built in and is essentially vestigial for CDMS purposes  

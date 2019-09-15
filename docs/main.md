@@ -21,7 +21,7 @@ Go ahead and clone the repository anywhere you like:
 - **scripts/rootenv.sh** is basically a boiled down version of ROOT's `thisroot.sh`, which can be sourced from any Python and should allow importing ROOT
   
 - **hooks/post-hook.sh** 
-  - Creates symlinks from `/packages` to `$HOME/Tutorials` so users have some reference material in their jupyter homespace 
+  - Creates symlinks from `/opt` to `$HOME/Tutorials` so users have some reference material in their jupyter homespace 
     - also makes sure this directory is read only, to prevent breaking edits to the global version
   - Initializes the custom bash environment
   
