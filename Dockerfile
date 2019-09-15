@@ -115,7 +115,6 @@ RUN . /opt/anaconda3/etc/profile.d/conda.sh && \
 	        h5py iminuit tensorflow pydot keras \
 	        dask[complete] \
 	        xlrd xlwt openpyxl && \
-	conda install -c conda-forge fish && \
 	pip install --upgrade pip setuptools && \
 	pip --no-cache-dir install memory-profiler tables \
 		zmq root_pandas awkward awkward-numba uproot root_numpy
