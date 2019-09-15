@@ -1,5 +1,5 @@
 # added by thisroot.sh
-export ROOTSYS=/packages/root6.12
+export ROOTSYS=/opt/root${ROOTVER:0:4}
 export DYLD_LIBRARY_PATH=$ROOTSYS/lib
 export JUPYTER_PATH=$ROOTSYS/etc/notebook
 export LIBPATH=$ROOTSYS/lib

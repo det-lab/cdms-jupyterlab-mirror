@@ -27,42 +27,8 @@ If you're interested in building your own Docker image for local use:
 
 ## Contributing
 
-If you'd like to make changes to the CDMS JupyterLab analysis environment, you should contribute to the develop branch of this repository.
+If you'd like to make changes to the CDMS JupyterLab analysis environment, you should contribute to the **develop branch of this repository**.
 
-0. Checkout the repository and switch to develop branch:
-    - `$ git clone https://gitlab.com/supercdms/CompInfrastructure/cdms-jupyterlab`
-    - `$ cd cdms-jupyterlab`
-    - `$ git checkout develop`
+Detailed instructions can be found in the `docs` directory. 
 
-1. For changes to the Docker image itself:
-- Make any changes and push to develop, for example:
-    - `$ git commit -a -m 'updated a thing'`
-    - `$ git push`
-
-2. Changes to CDMS packages should be made to the master branch:
-    - pyCAP
-    - scdmsPyTools
-    - tutorials
-    - python_colorschemes
-    - etc.
-
-3. Build image and push to Docker hub:
-- Option A:
-    - let josh know to build a new image
-    - it'll be reflected shortly in the cdms jupyterlab spawner options
-
-- Option B:
-    - login to docker (ask to be added to supercdms organization on docker hub)
-        - ``` 
-          $ docker login --username=loki --email=loki@asgard.com
-          Password: 
-          WARNING: login credentials saved in /home/loki/.docker/config.json
-          Succeeded 
-    - build using script (leave tag in script as '1.7b' for now)
-        - `$ bash build.sh`
-    - push image to docker hub
-        - `$ docker push detlab/cdms-jupyterlab:1.7b`
-    - the new image will be reflected shortly in the cdms jupyterlab spawner options
-
-Maybe in the future:
-- automated builds / CI through gitlab?
+[It's dangerous to go alone. Take this!](docs/main.md)
