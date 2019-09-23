@@ -109,13 +109,16 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_6
     rm /opt/anaconda.sh
 COPY scripts/rootenv.sh $ROOTSYS/bin/ 
 RUN . /opt/anaconda3/etc/profile.d/conda.sh && \
-	conda activate base && \ 
+	conda create -n cdms && conda activate cdms && \ 
+	conda config --add channels conda-forge && \
+	#conda install conda && \
 	. $ROOTSYS/bin/rootenv.sh && \
 	conda install jupyter jupyterlab metakernel \
 	        h5py iminuit tensorflow pydot keras \
 	        dask[complete] \
-	        xlrd xlwt openpyxl && \
-	conda install -c conda-forge fish && \
+	        xlrd xlwt openpyxl \ 
+		root && \
+	#conda install -c conda-forge root && \
 	pip install --upgrade pip setuptools && \
 	pip --no-cache-dir install memory-profiler tables \
 		zmq root_pandas awkward awkward-numba uproot root_numpy
