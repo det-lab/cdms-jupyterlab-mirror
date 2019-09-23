@@ -25,5 +25,6 @@ ln -s /opt/tutorials/AnimalDataIO.py $HOME/notebooks/Tutorials/Introduction/
 chmod -R 555 $HOME/notebooks/Tutorials
 
 ## Customize bash env
-ln -s /opt/cdmsbash/ $HOME
-bash $HOME/cdmsbash/init.sh
+rm $HOME/cdmsbash && ln -s /opt/cdmsbash/ $HOME
+echo ". cdmsbash/main" > $HOME/.bashrc
+sed -i 's/\/packages/\opt/g' $HOME/.bashrc
