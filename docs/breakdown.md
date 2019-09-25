@@ -65,7 +65,7 @@ Now, the base image - `slaclab/slac-jupyterlab` - uses Red Hat SCL (Software CoL
 
 #### 3.5 hooks/launch.bash
 
-This is the other, more interesting half of Jupyter notebook configuration.  
+This is the other, more interesting half of Jupyter notebook configuration. It gets called when a new notebook is created from the launcher.
 
 ```
 #!/bin/bash
