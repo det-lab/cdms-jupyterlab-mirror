@@ -142,7 +142,17 @@ RUN source scl_source enable rh-python36 && \
 	cd /opt/python_colorschemes && python setup.py install && \
 	cd /opt/pyCAP && python setup.py install && \
 	cd /opt/scdmsPyTools/scdmsPyTools/BatTools && \
-	make && cd ../.. && python setup.py install 
+	make && cd ../.. && python setup.py install
+
+#WORKDIR /opt
+#RUN . /opt/anaconda3/etc/profile.d/conda.sh && conda activate cdms && \
+#        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BOOST_PATH/lib && \
+#        cd /opt/analysis_tools && python setup.py install && \
+#        cd /opt/python_colorschemes && python setup.py install && \
+#        cd /opt/pyCAP && python setup.py install && \
+#        cd /opt/scdmsPyTools/scdmsPyTools/BatTools && \
+#        make && cd ../.. && python setup.py install
+ 
 
 ### Finalize environment ###
 
