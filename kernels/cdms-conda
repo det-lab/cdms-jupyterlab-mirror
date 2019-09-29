@@ -1,9 +1,0 @@
-{
- "display_name": "Conda(test)",
- "language": "python",
- "argv": [
-    "/opt/slac/jupyterlab/launch2.bash",
-     "3",
-    "{connection_file}"
- ]
-}

@@ -1,11 +1,12 @@
 ## Create or clear Tutorials dir, copy examples and tutorials
+
 if [ ! -d "$HOME/notebooks/Tutorials" ]; then
   mkdir -p $HOME/notebooks/Tutorials
-elif [ -d "$HOME/notebooks/Tutorials" ]; then
-  rm -rf $HOME/notebooks/Tutorials/*
 fi
 
 chmod -R 755 $HOME/notebooks/Tutorials
+
+rm -rf $HOME/notebooks/Tutorials/*
 
 mkdir $HOME/notebooks/Tutorials/pyCAP 
 ln -s /opt/pyCAP/examples/* $HOME/notebooks/Tutorials/pyCAP/

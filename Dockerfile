@@ -151,9 +151,9 @@ COPY hooks/post-hook.sh /opt/slac/jupyterlab/post-hook.sh
 ENV SHELL=/opt/anaconda3/bin/fish
 
 ## Create ROOT-enabled and code-developing notebook options 
-COPY hooks/launch.bash /opt/slac/jupyterlab/launch.bash
-COPY kernels/py3-ROOT /opt/rh/rh-python36/root/usr/share/jupyter/kernels/python3/kernel.json
-COPY hooks/launch2.bash /opt/slac/jupyterlab/launch2.bash
-COPY kernels/cdms-conda /usr/local/share/jupyter/kernels/cdms-conda/kernel.json
+COPY kernels/py3-root.bash /opt/slac/jupyterlab/launch.bash
+COPY kernels/py3-root.json /opt/rh/rh-python36/root/usr/share/jupyter/kernels/python3/kernel.json
+COPY kernels/cdms-conda.bash /usr/local/share/jupyter/kernels/cdms-conda/launch.bash
+COPY kernels/cdms-conda.json /usr/local/share/jupyter/kernels/cdms-conda/kernel.json
 #/opt/anaconda3/envs/cdms/share/jupyter/kernels/python3/kernel.json
 RUN rm -rf /usr/local/share/jupyter/kernels/slac_stack

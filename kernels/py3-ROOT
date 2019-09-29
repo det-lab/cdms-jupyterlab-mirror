@@ -1,9 +1,0 @@
-{
- "display_name": "Python 3",
- "language": "python",
- "argv": [
-    "/opt/slac/jupyterlab/launch.bash",
-     "3",
-    "{connection_file}"
- ]
-}
