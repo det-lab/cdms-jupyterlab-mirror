@@ -22,6 +22,7 @@ mkdir $HOME/notebooks/Tutorials/Introduction
 ln -s /opt/tutorials/JupyterDemo-Jan01.ipynb $HOME/notebooks/Tutorials/Introduction/'Intro to JupyterLab'.ipynb
 ln -s /opt/tutorials/2019-01-06_111527.jpg $HOME/notebooks/Tutorials/Introduction/
 ln -s /opt/tutorials/AnimalDataIO.py $HOME/notebooks/Tutorials/Introduction/
+ln -s /opt/tutorials/logout.png $HOME/notebooks/Tutorials/Introduction/
 
 chmod -R 555 $HOME/notebooks/Tutorials
 
