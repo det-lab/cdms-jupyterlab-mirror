@@ -115,10 +115,9 @@ RUN . /opt/anaconda3/etc/profile.d/conda.sh && \
 	. $ROOTSYS/bin/rootenv.sh && \
 	conda install jupyter jupyterlab metakernel \
 	        h5py iminuit tensorflow pydot keras \
-	        dask[complete] \
+	        matplotlib dask[complete] \
 	        xlrd xlwt openpyxl \ 
-		root && \
-	#conda install -c conda-forge root && \
+	     	root && \
 	pip install --upgrade pip setuptools && \
 	pip --no-cache-dir install memory-profiler tables \
 		zmq root_pandas awkward awkward-numba uproot root_numpy
@@ -144,6 +143,7 @@ RUN source scl_source enable rh-python36 && \
 	cd /opt/scdmsPyTools/scdmsPyTools/BatTools && \
 	make && cd ../.. && python setup.py install
 
+# doesn't like something about lcdmsio
 #WORKDIR /opt
 #RUN . /opt/anaconda3/etc/profile.d/conda.sh && conda activate cdms && \
 #        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BOOST_PATH/lib && \
