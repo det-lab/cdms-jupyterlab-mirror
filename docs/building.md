@@ -38,7 +38,7 @@ You might occasionally run into issues building an image. `docker build` fails w
 
 #### Saving space
 
-When you run into errors in building an image, you may have to adjust the repository files, try to build again, and potentially repeat this process numerous times. Docker is normally pretty good about keeping things small, but it also builds in **layers**, and caches each layer on disk to make future builds more efficient. This eventually starts to take up space, but there is something we can do about it! 
+When you run into errors in building an image, you may have to adjust the repository files, try to build again, and potentially repeat this process numerous times. Docker is normally pretty good about keeping things small, but it also builds in **layers**, and caches each layer on disk to make future builds more efficient. This eventually starts add up quite a bit, but there is something we can do about it! 
 
 1. We can try to make sure we're saving recent layers by running an already built container locally, for example:  
 ```
@@ -55,7 +55,9 @@ WARNING! This will remove:
         - all images without at least one container associated to them
 Are you sure you want to continue? [y/N] y
 
-
+.
+.
+.
 deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
 deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
 deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
@@ -66,7 +68,7 @@ deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
 deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
 deleted: sha256:4206942069420694206942069420694206942069999999999999999999999999
 
-Total reclaimed space: 24.45 GB
+Total reclaimed space: 114.45 GB
 
 $ 
 ```

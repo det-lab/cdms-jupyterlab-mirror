@@ -35,7 +35,7 @@ As far as what it actually does:
 
 2. Defines a variable `$CDMSGIT` to abbreviate the git links
 
-3. Creates a list of repositories to loop through
+3. Creates a list of repositories to loop through, something like:
 
 ```
 repos=( 
@@ -48,12 +48,12 @@ repos=(
 ```
 These will get tacked on to the end of `$CDMSGIT` in a loop which: 
   - Checks if the directory already exists
-    - Clones if it doesn't
-    - Git pulls if it does  
+  - Clones if it doesn't
+  - Git pulls if it does  
     
 Note - The format here is based on GitLab's allowing of "folders," have a peek [here](gitlab.com/supercdms) to get a sense of what I mean by that if you're not already familiar.  
 
-There are also a couple repositories that aren't in GitLab, or that don't work when trying to `git clone --recursive`, so I had to set up manual loops for each of those. Eventually though, the hope is **all** our repositories will be together somewhere like GitHub or GitLab. (GitBlit is ok but everyone kinda hates it and it doesn't offer great outside integration for things like CI/CD)
+There are also one or two repositories that aren't in GitLab yet, so I had to set up manual loops for each of those. Eventually though, the hope is **all** our repositories will be together somewhere like GitHub or GitLab. (GitBlit is ok but everyone kinda hates it and it doesn't offer great outside integration for things like CI/CD)
 
 #### 3. kernels/py3-ROOT
 

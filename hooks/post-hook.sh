@@ -5,6 +5,6 @@ ln -s /opt/tutorials/Tutorials $HOME/notebooks/Tutorials
 chmod -R 555 $HOME/notebooks/Tutorials
 
 ## Customize bash env
-rm $HOME/cdmsbash && ln -s /opt/cdmsbash/ $HOME
+rm $HOME/cdmsbash && ln -s /opt/CompInfrastructure/cdmsbash/ $HOME
 echo ". cdmsbash/main" > $HOME/.bashrc
 sed -i 's/\/packages/\opt/g' $HOME/.bashrc
