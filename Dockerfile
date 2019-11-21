@@ -101,7 +101,8 @@ RUN source $ROOTSYS/bin/thisroot.sh && \
 		iminuit tensorflow pydot keras \
 		awkward awkward-numba zmq \
 		dask[complete] \
-		xlrd xlwt openpyxl 
+		xlrd xlwt openpyxl \
+    tslearn 
 
 ### CDMS packages ###
 
