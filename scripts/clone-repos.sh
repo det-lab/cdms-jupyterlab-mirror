@@ -1,61 +1,67 @@
 #!/usr/bin/env bash
 
-### make local directory for cloning repos
-if [ ! -e "$DIR/cdms-repos" ]; then 
-    mkdir $DIR/cdms-repos
-    mkdir $DIR/cdms-repos/CompInfrastructure
-    mkdir $DIR/cdms-repos/Analysis
-fi
+##################################################################################
+# This script clones relevant code from the SCDMS GitLab. 
+# It is organized into loops based on the directory structure of the repository.
+# To add a new repository, add it to the corresponding `repo` list, following the 
+# structure of the already included examples. 
+###################################################################################
 
+### Make local directories for cloning repos
+mkdir $DIR/cdms-repos
+mkdir $DIR/cdms-repos/CompInfrastructure
+mkdir $DIR/cdms-repos/Analysis
+mkdir $DIR/cdms-repos/DataHandling
+
+
+# Variable to shorten repo URLs
 export CDMSGIT='git@gitlab.com:supercdms'
 
 ### Analysis code
 repos=( 
-    "Analysis/python_colorschemes" 
-    "Analysis/tutorials" 
-    "Analysis/pyCAP" 
-    "Analysis/scdmsPyTools_TF" 
+  "Analysis/python_colorschemes" 
+  "Analysis/tutorials" 
+  "Analysis/pyCAP" 
+  "Analysis/scdmsPyTools"
+  "Analysis/scdmsPyTools_TF"
 )
 for repo in "${repos[@]}"; do
-    if [ -d "$DIR/cdms-repos/$repo" ] && [ -d "$DIR/cdms-repos/$repo/.git" ]; then	
-        cd $DIR/cdms-repos/$repo
-        git pull
-    elif [ ! -e "$DIR/cdms-repos/$repo" ]; then
-	cd $DIR/cdms-repos/Analysis
-	git clone $CDMSGIT/$repo.git
-    fi
+  if [ -d "$DIR/cdms-repos/$repo" ] && [ -d "$DIR/cdms-repos/$repo/.git" ]; then	
+      cd $DIR/cdms-repos/$repo
+      git pull
+  elif [ ! -e "$DIR/cdms-repos/$repo" ]; then
+    cd $DIR/cdms-repos/Analysis
+  	git clone --recursive $CDMSGIT/$repo.git
+  fi
 done
 
 ### CompInfrastructure code
 repos=(
-    "CompInfrastructure/cdmsbash"
+  "CompInfrastructure/cdmsbash"
 )
 for repo in "${repos[@]}"; do
-    if [ -d "$DIR/cdms-repos/$repo" ] && [ -d "$DIR/cdms-repos/$repo/.git" ]; then
-        cd $DIR/cdms-repos/$repo
-	git pull
-    elif [ ! -e "$DIR/cdms-repos/$repo" ]; then
-	cd $DIR/cdms-repos/CompInfrastructure
-	git clone $CDMSGIT/$repo.git
-    fi
+  if [ -d "$DIR/cdms-repos/$repo" ] && [ -d "$DIR/cdms-repos/$repo/.git" ]; then
+    cd $DIR/cdms-repos/$repo
+	  git pull
+  elif [ ! -e "$DIR/cdms-repos/$repo" ]; then
+  	cd $DIR/cdms-repos/CompInfrastructure
+   	git clone --recursive $CDMSGIT/$repo.git
+  fi
 done
 
-### scdmsPyTools (recursive doesn't work)
-if [ -d "$DIR/cdms-repos/Analysis/scdmsPyTools" ] && [ -d "$DIR/cdms-repos/Analysis/scdmsPyTools/.git" ]; then
-    cd $DIR/cdms-repos/Analysis/scdmsPyTools
-    git pull
-elif [ ! -e "$DIR/cdms-repos/Analysis/scdmsPyTools" ]; then
-    cd $DIR/cdms-repos/Analysis
-    git clone $CDMSGIT/Analysis/scdmsPyTools.git
-    cd scdmsPyTools/scdmsPyTools/BatTools
-    rm -r BatCommon
-    git clone $CDMSGIT/Reconstruction/BatCommon.git
-    cd BatCommon
-    rm -r IOLibrary
-    git clone $CDMSGIT/DAQ/IOLibrary.git
-    cd $DIR/cdms-repos/Analysis/scdmsPyTools
-    git submodule update --init --recursive
-fi
+### DataHandling code
+repos=(
+  "DataHandling/Datacat"
+)
+for repo in "${repos[@]}"; do
+  if [ -d "$DIR/cdms-repos/$repo" ] && [ -d "$DIR/cdms-repos/$repo/.git" ]; then
+    cd $DIR/cdms-repos/$repo
+#    git pull
+  elif [ ! -e "$DIR/cdms-repos/$repo" ]; then
+    cd $DIR/cdms-repos/DataHandling
+    git clone --recursive $CDMSGIT/$repo.git
+  fi
+done
 
 ### analysis_tools (not in gitlab)
 if [ -d "$DIR/cdms-repos/analysis_tools" ] && [ -d "$DIR/cdms-repos/analysis_tools/.git" ]; then

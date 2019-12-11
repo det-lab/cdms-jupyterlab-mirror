@@ -19,11 +19,8 @@ Documentation on the official SuperCDMS JupyterLab image is available to SLAC us
 
 If you're interested in building your own Docker image for local use: 
 
-- You'll need to change every instance of `josh@nero` in `./build.sh` to reflect your SLAC username
-- JupyterLab is installed via pip, so you'll want to add a `RUN` statement at the end of `./Dockerfile` that launches JupyterLab when the container starts up
-	- You may need to provide some environment variables for JupyterLab to run properly. Check any error output for clues about where to start. 
-		- (I'll update this documentation with more useful information as I learn more about these variables)
 - `./build.sh` provides an example script that you'll likely want to adjust to fit your needs.
+- < add instructions for using jupyterlab > 
 
 ## Contributing
 

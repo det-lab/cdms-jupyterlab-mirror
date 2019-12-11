@@ -1,0 +1,9 @@
+{
+ "display_name": "Conda(test)",
+ "language": "python",
+ "argv": [
+     "/usr/local/share/jupyter/kernels/cdms-conda/launch.bash",
+     "3",
+    "{connection_file}"
+ ]
+}
