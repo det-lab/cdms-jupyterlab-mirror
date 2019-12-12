@@ -8,10 +8,10 @@
 ###################################################################################
 
 ### Make local directories for cloning repos
-mkdir $DIR/cdms-repos
-mkdir $DIR/cdms-repos/CompInfrastructure
-mkdir $DIR/cdms-repos/Analysis
-mkdir $DIR/cdms-repos/DataHandling
+mkdir -p $DIR/cdms-repos
+mkdir -p $DIR/cdms-repos/CompInfrastructure
+mkdir -p $DIR/cdms-repos/Analysis
+mkdir -p $DIR/cdms-repos/DataHandling
 
 
 # Variable to shorten repo URLs
