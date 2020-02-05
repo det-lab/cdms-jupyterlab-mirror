@@ -102,7 +102,7 @@ RUN source $ROOTSYS/bin/thisroot.sh && \
 		awkward awkward-numba zmq \
 		dask[complete] \
 		xlrd xlwt openpyxl \
-    tslearn 
+    tslearn arviz 
 
 ### CDMS packages ###
 
