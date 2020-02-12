@@ -1,6 +1,16 @@
 ### Building an image
 
-Alright, now we know what all the files do, let's look at how we use them to build an image. 
+Alright, now we know what all the files do, let's look at how we use them to build an image.
+
+Ensure you:
+
+1. Have a docker account
+
+2. Have been added to the supercdms organization over Docker
+
+3. Have the correct permissions in the supercdms organization in Docker
+
+4. Change the line `git clone nero:/data/git/TF_Analysis/Northwestern/analysis_tools.git` in `scripts/clone-repos.sh` to match your SSH into nero
 
 To actually build the image, just open a terminal and call:  
 `cdms-jupyterlab $ bash build.sh`
