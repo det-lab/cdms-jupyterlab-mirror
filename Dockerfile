@@ -79,8 +79,9 @@ RUN sudo yum install -y \
 	gcc libcurl-devel libX11-devel \
 	blas-devel libarchive-devel fuse-sshfs jq graphviz dvipng \
 	libXext-devel bazel http-parser nodejs perl-Digest-MD5 perl-ExtUtils-MakeMaker gettext \
-	# LaTeX tools
-	pandoc texlive texlive-collection-xetex texlive-ec texlive-upquote texlive-adjustbox \ 
+	# LaTeX and writing tools
+	texlive texlive-collection-xetex texlive-ec texlive-upquote texlive-adjustbox \
+  pandoc open-sans-fonts \ 
 	# Data formats
 	hdf5-devel \ 
 	# Compression tools
