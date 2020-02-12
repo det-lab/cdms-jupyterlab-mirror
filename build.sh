@@ -6,11 +6,8 @@ echo Script directory: $DIR
 . scripts/clone-repos.sh
 
 export DOCKER_IMG='supercdms/cdms-jupyterlab'
-<<<<<<< HEAD
 export IMAGE_VER='1.9b'
-=======
-export IMAGE_VER='1.8'
->>>>>>> 95b0f605196f0dddfc48c7eef3466c5003ac9629
+
 
 cd $DIR
 
